@@ -76,9 +76,9 @@ int main(int argc, char **argv) {
     }
 
     int sockfd = tcp_bind_socket_to_port(atoi(argv[1]));
-    
+
     unblock_socket(sockfd);
-    
+
     std::vector<int> socks;
     fd_set readset;
     int total = 0;
@@ -100,7 +100,7 @@ int main(int argc, char **argv) {
         if (res == 0) {
             std::cout << "select timed out" << std::endl;
             return 0;
-        } 
+        }
         if (res > 0) {
             if (FD_ISSET(sockfd, &readset)) {
                 struct sockaddr_in sourceAddr;
